@@ -1,0 +1,22 @@
+En el repositorio que hemos clonado creamos el virtual environment
+ python3 -m venv vep4
+ Lo activamos
+ source vep4/bin/activate
+ instalar las librerias
+ pip3 install -r requirements.txt
+Desactivar el virtual environment
+deactivate
+Guardar la configuracion
+cd vep4/lib/python3.7/site-packages/
+zip -r ../../../../paquete_lambda.zip .
+Volver atras
+cd ../../../../
+Y metemos el codigo en el zip
+zip -g paquete_lambda.zip lambda_function.py
+Ver cuanto ocupa
+ls -lh
+Si es >50mb hay que pasarlo por s3
+Creamos un nuevo bucket de s3
+aws s3 mb s3://actualizacionlambda
+Cargamos el paquete lambda 
+aws s3 mv paquete_lambda.zip s3://actualizacionlambda
